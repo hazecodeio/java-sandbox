@@ -1,8 +1,6 @@
 package io_nio;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -47,6 +45,29 @@ class ProcessRunner {
 
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(
                 last.getInputStream()));
+        stdInput.lines().forEach(System.out::println);
+
+    }
+}
+
+
+//ToDo - need fixing
+class ProcessRunner02 {
+    public static void main(String[] args) throws IOException {
+        ProcessBuilder cat = new ProcessBuilder("cat");//.redirectInput(ProcessBuilder.Redirect.PIPE);
+        Process start = cat.start();
+
+        OutputStream outputStream = start.getOutputStream();
+        outputStream.write("ssss".getBytes());
+        outputStream.flush();
+        outputStream.write("ssss".getBytes());
+        outputStream.flush();
+        outputStream.write("ssss".getBytes());
+        outputStream.flush();
+
+        InputStream inputStream = start.getInputStream();
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(
+                inputStream));
         stdInput.lines().forEach(System.out::println);
 
     }
