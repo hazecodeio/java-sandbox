@@ -51,24 +51,61 @@ class ProcessRunner {
 }
 
 
-//ToDo - need fixing
 class ProcessRunner02 {
     public static void main(String[] args) throws IOException {
-        ProcessBuilder cat = new ProcessBuilder("cat");//.redirectInput(ProcessBuilder.Redirect.PIPE);
+        ProcessBuilder cat = new ProcessBuilder("cat").command("jq", "-c", "select(.name == \"Alis\")");//.redirectInput(ProcessBuilder.Redirect.PIPE);
         Process start = cat.start();
 
         OutputStream outputStream = start.getOutputStream();
-        outputStream.write("ssss".getBytes());
+        outputStream.write("{\"name\": \"Alis\", \"age\": \"22\"}".getBytes());
         outputStream.flush();
-        outputStream.write("ssss".getBytes());
-        outputStream.flush();
-        outputStream.write("ssss".getBytes());
-        outputStream.flush();
+
+        ProcessBuilder jq = new ProcessBuilder("jq", "-c", "select(.name != \"Alis\")");
+
+
+        outputStream.close();
 
         InputStream inputStream = start.getInputStream();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(
                 inputStream));
         stdInput.lines().forEach(System.out::println);
+        inputStream.close();
+
+    }
+}
+
+class ProcessRunner03 {
+    public static void main(String[] args) throws IOException {
+        ProcessBuilder cat = new ProcessBuilder("cat");
+        ProcessBuilder jq = new ProcessBuilder("jq", "-c", "select(.name == \"Alis\")");
+
+        List<ProcessBuilder> cmds = Arrays.asList(cat, jq);
+        List<Process> processes = ProcessBuilder.startPipeline(cmds);
+
+        Process catCmd = processes.get(0);
+        OutputStream outputStream = catCmd.getOutputStream();
+        outputStream.write("{\"name\": \"Alis\", \"age\": \"22\"}".getBytes());
+        outputStream.flush();
+
+        outputStream.close();
+
+        InputStream inputStream = catCmd.getInputStream();
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(
+                inputStream));
+        stdInput.lines().forEach(System.out::println);
+
+        inputStream.close();
+
+
+        Process last = processes.get(processes.size() - 1);
+
+        BufferedReader stdInput2 = new BufferedReader(new InputStreamReader(
+                last.getInputStream()));
+        stdInput2.lines().forEach(System.out::println);
+
+
+//        outputStream.close();
+        stdInput2.close();
 
     }
 }
