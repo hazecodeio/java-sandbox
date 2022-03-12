@@ -21,6 +21,7 @@
         <!--common-->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
         <java.version>17</java.version>
         <encoding>UTF-8</encoding>
 
