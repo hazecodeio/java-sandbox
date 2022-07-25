@@ -10,6 +10,13 @@
         <version>1.0</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>github-repo</id>
+            <url>https://github.com/hsmak/maven-parent-poms/raw/main</url>
+        </repository>
+    </repositories>
+
     <groupId>org.hsmak</groupId>
     <artifactId>java-sandbox</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -23,11 +30,5 @@
         <module>tools-and-utils</module>-->
     </modules>
 
-    <repositories>
-        <repository>
-            <id>github-repo</id>
-            <url>https://github.com/hsmak/maven-parent-poms/raw/main</url>
-        </repository>
-    </repositories>
 
 </project>
