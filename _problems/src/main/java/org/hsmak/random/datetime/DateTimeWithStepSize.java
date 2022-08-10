@@ -62,6 +62,7 @@ public class DateTimeWithStepSize {
 
     }
 
+    //ToDo - Code another strategy to calculate the # days in between using `LocalDate.now.get(ChronoField.DAY_OF_YEAR)`
     private static List<Integer> prepareDataForStepSizeOfDays(LocalDate currentDate) {
         List<Integer> stepSizeOfDaysList = List.of(7,
                 currentDate.getMonth().length(currentDate.isLeapYear()),
