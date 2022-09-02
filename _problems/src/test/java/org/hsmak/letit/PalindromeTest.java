@@ -1,4 +1,4 @@
-package org.hsmak.random.string;
+package org.hsmak.letit;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class PalindromeTest {
 
-    Palindrome palindrome;
+     Palindrome palindrome;
 
     public PalindromeTest(Palindrome.StrategyE strategy) {
         this.palindrome = new Palindrome(strategy);
