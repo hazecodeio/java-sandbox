@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hsmak</groupId>
+    <groupId>com.haze</groupId>
     <artifactId>design-patterns</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
