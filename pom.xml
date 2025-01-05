@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>org.haze</groupId>
-        <artifactId>java_17-pom</artifactId>
+        <artifactId>jdk17-pom</artifactId>
         <version>1.0</version>
     </parent>
 

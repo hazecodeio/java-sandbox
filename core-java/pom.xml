@@ -4,6 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>core-java</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.haze</groupId>
@@ -13,7 +15,7 @@
 
     <properties>
         <derby.version>10.17.1.0</derby.version>
-        <spring.version>6.2.1</spring.version>
+        <spring.version>5.3.39</spring.version>
     </properties>
 
     <dependencies>
